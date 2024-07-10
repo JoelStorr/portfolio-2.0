@@ -5,7 +5,8 @@ import Desktop from "./Pages/Desktop/Desktop";
 
 
 import "./App.css"
-
+import ThreeDScene from "./3D/ThreeDScene";
+import { Routes, Route, useLocation } from "react-router-dom";
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
   window.addEventListener("click", () =>
     setDisplayState(window.clickedObject)
   );
+  
   
 
   useEffect(() => {
@@ -32,7 +34,8 @@ function App() {
     <div className="app">
       {/* <button className="mainCloseBtn" onClick={onClickHandler}>X</button> */}
       {/* {displayState == "WorkDesk" ? <Desktop /> : <Console />} */}
-      <Desktop />
+      <ThreeDScene  />
+      {/* <Desktop /> */}
     </div>
   );
 }

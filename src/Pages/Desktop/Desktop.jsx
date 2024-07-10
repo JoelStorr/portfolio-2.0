@@ -25,32 +25,39 @@ import Portfolio from "./Browser/Websites/Portfolio";
 
 function Desktop() {
   const [width, setWidth] = useState(window.innerWidth);
-  const location = useLocation();
+
+  let pathname = window.location.pathname
 
   function handleWindowSizeChange() {
     setWidth(window.innerWidth);
   }
   useEffect(() => {
     window.addEventListener("resize", handleWindowSizeChange);
+    
     return () => {
       window.removeEventListener("resize", handleWindowSizeChange);
     };
   }, []);
 
+ 
+
+  console.log(window.location.pathname)
+
+if(pathname){
   return (
     <>
       <div
         className={
-          location.pathname === "/"
+          pathname === "/"
             ? "programmHolder"
-            : location.pathname === "/about"
+            : pathname === "/about"
             ? "programmHolderSmall programmHolderActive"
             : "programmHolder programmHolderActive"
         }
       >
         <Routes>
           <Route path="/" element={<></>} />
-
+  
           {/* NOTE: AppStore Routes */}
           <Route path="/appstore" element={<AppStore width={width} />}>
             <Route element={<WhenIChanged />} index={true} />
@@ -70,22 +77,27 @@ function Desktop() {
           </Route>
           {/* NOTE: XCode Routes */}
           <Route path="/xcode" element={<XCode width={width} />} />
-
+  
           <Route path="/about" element={<Kontakt width={width} />} />
         </Routes>
       </div>
-
+  
       <div className="desktop">
         <TopBar />
         <div className="widgetHolder">
           <Widgets width={width} />
         </div>
-        <MainDesktop width={width} />
+        <MainDesktop width={width} pathname={pathname} />
         <AppBar />
         <h1 className="tagline">Frontend Developer</h1>
       </div>
     </>
   );
+
+} else {
+  return  null
+}
+
 }
 
 export default Desktop;

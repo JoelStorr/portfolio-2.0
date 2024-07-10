@@ -2,15 +2,15 @@ import { useEffect, useState } from "react";
 import {Link, useLocation} from 'react-router-dom';
 import "./MainDesktop.css";
 
-export default function MainDesktop({ width }) {
+export default function MainDesktop({ width, pathname }) {
 
-  const location = useLocation();
+  
 
   return (
     <div className="mainDesktop">
       {width <= 825 ? null : (
         <Link to="/" className={
-         location.pathname === "/" ? "desktopSpacer noPointer" : "desktopSpacer"
+         pathname === "/" ? "desktopSpacer noPointer" : "desktopSpacer"
         }>
         </Link>
       )}
