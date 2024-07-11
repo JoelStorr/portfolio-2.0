@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, BrowserRouter } from "react-router-dom";
 import TopBar from "./TopBar/TopBar";
 import MainDesktop from "./MainDesktop/MainDesktop";
 import AppBar from "./AppBar/AppBar";
@@ -45,7 +45,8 @@ function Desktop() {
 
 if(pathname){
   return (
-    <>
+    
+    <BrowserRouter>
       <div
         className={
           pathname === "/"
@@ -91,7 +92,9 @@ if(pathname){
         <AppBar />
         <h1 className="tagline">Frontend Developer</h1>
       </div>
-    </>
+
+    </BrowserRouter>
+    
   );
 
 } else {

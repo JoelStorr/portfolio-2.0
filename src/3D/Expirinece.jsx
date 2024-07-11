@@ -1,11 +1,38 @@
 import { Environment, Html, Stage } from '@react-three/drei';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Desktop from '../Pages/Desktop/Desktop';
 import TestComponent from './TestComponent';
 
 import './Expirience.css';
 
 export default function Expirinece() {
+
+
+
+  const [path, setPath] = useState(window.location.pathname)
+
+
+  useEffect(()=>{
+
+    const handleClicks = ()=>{
+
+      setPath(window.location.pathname);
+    }
+
+    document.body.addEventListener('click', handleClicks)
+    
+    console.log(path);
+
+    return ()=>{
+      document.body.removeEventListener('click', handleClicks);
+    }
+
+  }, [])
+
+
+
+
+
   return (
     <>
         <Stage 
