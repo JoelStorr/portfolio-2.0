@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Routes, Route, useLocation, BrowserRouter } from "react-router-dom";
+import { Routes, Route, useLocation, BrowserRouter, Link } from "react-router-dom";
 import TopBar from "./TopBar/TopBar";
 import MainDesktop from "./MainDesktop/MainDesktop";
 import AppBar from "./AppBar/AppBar";
@@ -92,7 +92,7 @@ if(pathname){
         <AppBar />
         <h1 className="tagline">Frontend Developer</h1>
       </div>
-
+        <Link to="/gallary" className="gallary-link">Gallary</Link>
     </BrowserRouter>
     
   );

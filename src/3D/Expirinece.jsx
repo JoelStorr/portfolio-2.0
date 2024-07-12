@@ -20,45 +20,59 @@ export default function Expirinece() {
     }
 
     document.body.addEventListener('click', handleClicks)
+    window.addEventListener('popstate', handleClicks)
     
     console.log(path);
 
     return ()=>{
       document.body.removeEventListener('click', handleClicks);
+      window.removeEventListener('popstate', handleClicks);
     }
 
-  }, [])
+  })
 
 
 
+  if(path === '/gallary'){
 
-
-  return (
-    <>
-        <Stage 
-           shadows={{type: 'contact', opacity: 0.2, blur:3}} 
-           environment="sunset"
-           preset='portrait'
-           intensity={2}
-           
-        >
-        <mesh
-            position-z={-5}
-            receiveShadow={true}
-            castShadow={true}
-        >
-        <torusKnotGeometry />
-        <meshLambertMaterial />
-        <Html position-z={3}  center className='html-holder'>
-            <h1>Hello World</h1>
-            <TestComponent />
-            <Desktop />
-        </Html>
+    return (
+      <Stage>
+        <mesh>
+          <boxGeometry/>
+          <meshNormalMaterial/>
         </mesh>
-        </Stage>
-    </>
+      </Stage>
+    )
 
-    
+  } else {
 
-  );
+    return (
+      <>
+          <Stage 
+             shadows={{type: 'contact', opacity: 0.2, blur:3}} 
+             environment="sunset"
+             preset='portrait'
+             intensity={2}
+             
+          >
+          <mesh
+              position-z={-5}
+              receiveShadow={true}
+              castShadow={true}
+          >
+          <torusKnotGeometry />
+          <meshLambertMaterial />
+          <Html position-z={3}  center className='html-holder'>
+              <Desktop />
+          </Html>
+          </mesh>
+          </Stage>
+      </>
+  
+      
+  
+    );
+  }
+
+
 }

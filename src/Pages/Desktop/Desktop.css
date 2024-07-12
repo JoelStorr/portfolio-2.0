@@ -84,6 +84,16 @@ p {
     z-index: -1;
 }
 
+
+.gallary-link{
+    position: absolute;
+    top: -10rem;
+    right: 20rem;
+    color: red;
+    font-weight: bolder;
+}
+
+
 @media screen and (max-width: 950px) {
 
     .widgetHolder {
